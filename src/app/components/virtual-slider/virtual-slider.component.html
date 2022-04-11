@@ -1,0 +1,43 @@
+<div>
+  <div class="slider-months-container">
+    <div class="slider-months-content">
+      <div
+        [style.width.px]="sliderMonths[0].size * 150"
+        class="slider-month"
+        [class.right-border]="sliderMonths[1]"
+      >
+        {{ sliderMonths[0].name }}
+      </div>
+      <div
+        [style.width.px]="sliderMonths[1].size * 150"
+        *ngIf="sliderMonths[1]"
+        class="slider-month left-border"
+      >
+        {{ sliderMonths[1].name }}
+      </div>
+    </div>
+  </div>
+  <div class="slider-container">
+    <div (click)="moveLeft()" class="slider-button">
+      <mat-icon class="slider-arrow-icon" aria-hidden="false"
+        >keyboard_arrow_left</mat-icon
+      >
+    </div>
+    <div class="slider-content">
+      <div
+        class="slider-days"
+        [class.slider-days-transition]="transitionEnabled"
+        [style.transform]="'translateX(' + translateX + 'px)'"
+      >
+        <div *ngFor="let sliderDay of sliderDays" class="slider-day">
+          {{ sliderDay.day }}
+        </div>
+      </div>
+    </div>
+    <div (click)="moveRight()" class="slider-button">
+      <mat-icon class="slider-arrow-icon" aria-hidden="false"
+        >keyboard_arrow_right</mat-icon
+      >
+    </div>
+  </div>
+</div>
